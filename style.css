@@ -5,8 +5,8 @@ html,body{
 .grid{
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   border:solid 2px black;
 }
 .square{
@@ -14,5 +14,8 @@ html,body{
   height:20px;
 }
 .snake{
-  background-color:green; 
+  background-color:green;
+}
+.apple{
+  background-color: blue;
 }
