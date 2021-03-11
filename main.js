@@ -43,6 +43,19 @@ return clearInterval(timerId)
   squares[tail].classList.remove('snake');
   //add sqare in directon we are heading
   currentSnake.unshift(currentSnake[0]+ direction)
+
+//deal with snake head getting the apple
+if(squares[currentSnake[0]].classList.contains('apple')){
+  //remove the class of apple
+  squares[currentSnake[0]].classList.remove('apple')
+  //grow our snake by adding class of snake
+  //grow snake array
+  //generate a new appleIndex
+  //add one to the Score
+  //speed up our snake
+}
+
+
   //add style in new square
   squares[currentSnake[0]].classList.add('snake');
 }
