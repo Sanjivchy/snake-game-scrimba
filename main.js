@@ -1,11 +1,14 @@
 const grid= document.querySelector('.grid');
 const startButton= document.getElementById('start');
-const score= document.getElementById('score');
+const scoreDisplay = document.getElementById('score');
 let squares=[];
 let currentSnake=[2,1,0];
 let direction =1;
 let width = 10
 let appleIndex= 0
+let score = 0
+let intervalTime= 1000
+let speed = 0.9
 
 function createGrid(){
   // create 100 of these elements with a for loop
@@ -37,7 +40,7 @@ function move(){
 
 return clearInterval(timerId)
 
-  //remove last element fron current snake array
+  //remove last element fron current snake arraysq
   const tail= currentSnake.pop()
   //remove stylig from last element
   squares[tail].classList.remove('snake');
@@ -49,10 +52,21 @@ if(squares[currentSnake[0]].classList.contains('apple')){
   //remove the class of apple
   squares[currentSnake[0]].classList.remove('apple')
   //grow our snake by adding class of snake
+  squares[tail].classList.add('snake')
+  console.log(tail)
   //grow snake array
+  currentSnake.push(tail)
+  console.log(currentSnake)
   //generate a new appleIndex
+  generateApples()
   //add one to the Score
+  score++
+  //display
+  scoreDisplay.textContent=score
   //speed up our snake
+  clearInterval(timerId)
+  intervalTime = intervalTime * speed
+  timerId = setInterval(move,intervalTime)
 }
 
 
@@ -63,7 +77,7 @@ move();
 
 //const timerId= setInterval(function,time)
 
-let timerId=setInterval(move,1000)
+let timerId=setInterval(move,intervalTime)
 function generateApples(){
   do{
     //genetare a random number
